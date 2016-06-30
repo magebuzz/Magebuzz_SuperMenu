@@ -1,0 +1,32 @@
+<?php $listCurrentProducts = $this->getListCurrentProducts();
+  $item = $this->getItems() ;
+  $data = $item->getData();
+  $sizeData = count($listCurrentProducts->getData());
+  $productsperrow = $item->getNumberOfColumn();
+?>
+<div class="menu-product-listing" style="width:<?php if($item->getWidthOfColumn()){echo $item->getWidthOfColumn() * $productsperrow;}?>px;">
+	<?php $i = 0; foreach($listCurrentProducts as $product):?>
+		<?php if ($i++%$productsperrow==0): ?>
+		  <ul class="grid-products-column">   
+		<?php endif ?>   
+				<li class="product" style="float:left; width:<?php if($item->getWidthOfColumn()){echo $item->getWidthOfColumn();}else{ echo '100';}?>px;">
+					<div class="product-info">
+						<h3 class="product-name a-left"><a href="<?php echo $product->getProductUrl(); ?>" title="<?php echo $product->getName();?>"><?php echo $product->getName();?></a></h3>
+					</div>
+				</li>  
+		<?php if ($i%$productsperrow==0 || $i==count($listCurrentProducts)): ?>    
+			</ul>                         
+		<?php endif ?>
+	<?php endforeach;?>
+	<script type="text/javascript">decorateGeneric($$('ul.grid-products-column'), ['odd','even','first','last'])</script>
+</div>
+
+<?php
+if($data['featured_type'] == 'block'){
+  ?>
+  <div class="featured_static_block">
+    <?php echo Mage::app()->getLayout()->createBlock('cms/block')->setBlockId($data['featured_block'])->toHtml();?>
+  </div>
+<?php
+}
+?>

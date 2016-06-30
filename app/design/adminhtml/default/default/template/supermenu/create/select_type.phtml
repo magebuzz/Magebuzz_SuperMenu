@@ -1,0 +1,50 @@
+<?php
+  $itemType = Mage::getModel('supermenu/config_itemtype')->getOptionArray();
+  $position = Mage::getModel('supermenu/config_position')->getOptionArray();
+  $key = Mage::getSingleton('core/session')->getFormKey();
+  $urlForm = Mage::helper("adminhtml")->getUrl("*/*/submittype");
+?>
+<div class="entry-edit">
+  <div class="entry-edit-head">    
+    <h4 class="fieldset-legend"><?php echo $this->__('Select block type'); ?></h4>
+  </div>
+  <form action="<?php echo $urlForm;?>" method="POST">
+    <input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
+    <div class="fieldset">    
+      <table cellspacing="3" class="form-list"> 
+        <tr>
+          <td class="label"><label for="item_type"><?php echo $this->__('Items Type:') ?></label></td>
+          <td class="value">          
+            <select class="select" name="item_type" id="item_type">
+              <?php foreach ($itemType as $key => $value):?>
+                <option value="<?php echo $key?>"><?php echo $value; ?></option>
+                <?php endforeach;?>
+            </select>
+          </td>        
+        </tr>
+        <tr>
+          <td class="label"><label for="position"><?php echo $this->__('Position :') ?></label></td>
+          <td class="value">          
+            <select class="select" name="position" id="position">
+              <?php foreach ($position as $key => $value):?>
+                <option value="<?php echo $key?>"><?php echo $value; ?></option>
+                <?php endforeach;?>
+            </select>
+          </td>      
+        </tr>
+        <tr>        
+          <td class="value"></td>
+          <td class="value">
+            <input type="submit" class="button form-button submit" value="Continue" name="submit" id="submit">
+          </td>
+        </tr>
+      </table>          
+    </div>  
+  </form>
+</div>
+<script>
+  function redirectCreateBlock(){
+    var blockValue = $('block_type').value;
+    setLocation('<?php echo $this->getUrl('*/*/edit')?>'+'?block_id='+blockValue);
+  }  
+</script>

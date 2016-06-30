@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<default>
+		<reference name="head">
+			<action method="addCss" ifconfig="supermenu/general/topmenu_active"><stylesheet>css/supermenu/topmenu.css</stylesheet></action>
+			<action method="addCss" ifconfig="supermenu/general/sidebar_menu_active"><stylesheet>css/supermenu/sidebarmenu.css</stylesheet></action>
+			<action method="addJs" ifconfig="supermenu/general/topmenu_active"><script>magebuzz/supermenu/topmenu.js</script></action>
+			<action method="addJs" ifconfig="supermenu/general/sidebar_menu_active"><script>magebuzz/supermenu/sidebarmenu.js</script></action>
+			<action method="addJs" ifconfig="supermenu/general/include_js"><script>magebuzz/supermenu/jquery.min.js</script></action>
+			<action method="addJs" ifconfig="supermenu/general/include_js"><script>magebuzz/supermenu/jquery.noconflict.js</script></action>
+		</reference>
+		<reference name="catalog.topnav">
+			<action method="setTemplate" ifconfig="supermenu/general/topmenu_active">
+					<template>supermenu/config.phtml</template>
+			</action>
+			<block name="catalog.topnav.new" type="supermenu/supermenu" template="supermenu/supermenu.phtml"/>
+      <block name="catalog.topnav.old" type="catalog/navigation" template="catalog/navigation/top.phtml"/>
+		</reference>
+		<reference name="left">
+			<block type="supermenu/supermenu" before="-" name="supermenu.left.sidebar">
+				<action method="displayOnLeftSidebarBlock" />
+			</block>
+		</reference>
+		<reference name="right">
+			<block type="supermenu/supermenu" before="-" name="supermenu.right.sidebar">
+				<action method="displayOnRightSidebarBlock" />
+			</block>
+		</reference>
+	</default>
+	<!--<supermenu_index_index>
+       <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+		<reference name="content">
+			<block type="supermenu/supermenu" name="supermenu" template="supermenu/supermenu.phtml" />
+		</reference>
+	</supermenu_index_index>-->
+</layout> 

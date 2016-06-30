@@ -1,0 +1,108 @@
+<?php $dataForm = $this->productData();
+$templates = $this->getTemplateList();
+?>
+<div class="entry-edit">
+  <div class="entry-edit-head">
+    <h4 class="icon-head head-edit-form fieldset-legend"><?php echo Mage::helper('catalog')->__('Main Contents') ?></h4>
+  </div>
+  <fieldset id="grop_fields">
+    <table cellspacing="0" class="form-list">
+      <tbody>
+        <tr id='current_product_view'>
+          <td class="label"><label><?php echo $this->__('Select Product')?></label></td>
+          <td class="value">
+            <div style="width: 650px;">            
+            <input type="text" class="rule-param input-text" value="<?php echo $dataForm['products_content']?>" name="products_content" id="current_products">
+            <a onclick="toggleCurrentProducts()" href="javascript:void(0)" id="item_product_link">
+              <img title="Select Products" class="v-middle rule-chooser-trigger" alt="" src="<?php echo  Mage::getDesign()->getSkinUrl('images/rule_chooser_trigger.gif');?>"></a>
+            <!--<input type="hidden" id="item_product_all_ids" value="">-->
+            <div style="display: none; width: 640px;" id="current_products_select"></div>
+          </td>          
+        </tr>  
+        <tr>
+          <td class="label" for="number_of_column"><label><?php echo $this->__('Products per row')?><span class="required">*</span></label></td>
+          <td class="value">
+            <input type="text" class="input-text validate-number required-entry" value="<?php echo $dataForm['number_of_column']?>" name="number_of_column" id="number_of_column">
+          </td>   
+        </tr>  
+        <tr>
+          <td class="label" for="width_of_column"><label><?php echo $this->__('Width of a product on grid')?><span class="required">*</span></label></td>
+          <td class="value">
+            <input type="text" class="input-text validate-number required-entry" value="<?php echo $dataForm['width_of_column']?>" name="width_of_column" id="width_of_column">(px)
+          </td>   
+        </tr>
+        <tr>
+          <td class="label" for="template_id"><label><?php echo $this->__('Layout')?><span class="required">*</span></label></td>
+          <td class="value">          
+            <select class="select" name="template_id" id="template_id">
+              <?php foreach ($templates as $key => $value):?>
+                <option <?php if($dataForm['template_id']==$key):?>selected="selected"<?php endif;?> value="<?php echo $key?>"><?php echo $value; ?></option>
+                <?php endforeach;?>
+            </select>
+          </td>   
+        </tr>          
+      </tbody>
+    </table>    
+  </fieldset>
+</div>
+
+<script type="text/javascript">
+  function toggleCurrentProducts(){    
+    if($("current_products_select").style.display == "none"){    
+      var url = "<?php echo $this->getUrl('supermenu/adminhtml_supermenu/chooserCurentProducts');?>";
+      var params = $("current_products").value.split(",");
+      var parameters = {"form_key": FORM_KEY,"selected[]":params };
+      var request = new Ajax.Request(url,
+      {
+        evalScripts: true,
+        parameters: parameters,
+        onComplete:function(transport){
+          $("current_products_select").update(transport.responseText);
+          $("current_products_select").style.display = "block"; 
+        }
+      }); 
+    }else{
+      $("current_products_select").style.display = "none";
+    } 
+  }
+
+  var current_grid;
+  function constructCurrentData(div){
+    current_grid = window[div.id+"JsObject"];
+    if(!current_grid.reloadParams){
+      current_grid.reloadParams = {};   
+      current_grid.reloadParams["selected[]"] = $("current_products").value.split(", "); 
+    }
+  }
+  function selectCurrentProduct(e) {
+    if(e.checked == true){
+
+      if($("current_products").value == "")
+        $("current_products").value = e.value;
+      else
+        $("current_products").value = $("current_products").value + ", "+e.value;
+      current_grid.reloadParams["selected[]"] = $("current_products").value.split(", ");  
+    }else{
+
+      var vl = e.value;      
+      if($("current_products").value.search(vl) == 0){
+        var  patt = /,/g;
+        var res = patt.test($("current_products").value);
+        if(!res){
+          $("current_products").value="";
+        }else{
+          $("current_products").value = $("current_products").value.replace(vl+", ","");
+        }
+      }else{      
+
+        var patt = /,/g;        
+        var res = patt.test($("current_products").value);
+        if(!res){
+          $("current_products").value="";
+        }else{
+          $("current_products").value = $("current_products").value.replace(", "+ vl,"");
+        }
+      }
+    }
+  }    
+</script>

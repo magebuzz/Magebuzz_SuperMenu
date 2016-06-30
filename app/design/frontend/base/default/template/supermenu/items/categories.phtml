@@ -1,0 +1,53 @@
+<?php
+/*
+* Copyright (c) 2014 www.magebuzz.com 
+*/
+?>
+
+<?php
+  $categoryData  = $this->getParentCategories() ;
+  $item = $this->getItems() ;
+  $data = $item->getData();
+  $sizeData = count($categoryData->getData());
+  $numberRowOfCol = $item->getNumberOfColumn();  
+?>
+<?php $row_array = array();?>
+<?php $numCol = floor($sizeData/$numberRowOfCol);?>
+<?php $add_row = $sizeData%$numberRowOfCol;?>
+<?php for ($i=0; $i < $numberRowOfCol; $i++): ?>
+	<?php if ($add_row > 0):?>
+		<?php $row_array[] = $numCol + 1;?>
+	<?php else:?>
+		<?php $row_array[] = $numCol;?>
+	<?php endif;?>
+	<?php $add_row--;?>
+<?php endfor;?>
+
+<div class="grid-categories-column" style="width:<?php if($item->getWidthOfColumn()){echo $item->getWidthOfColumn() * $numberRowOfCol;}?>px;">    
+	<?php $i = 0;$j=0; $rindex=0; foreach($categoryData as $category):?>    
+		<?php if ($i++%$row_array[$rindex]==0): ?>
+			<?php $j++;?>
+			<ul class="menu-column column<?php echo $j;?>" style="float:left; width:<?php if($item->getWidthOfColumn()){echo $item->getWidthOfColumn();}else{ echo '180';}?>px;"> 
+		<?php endif ?> 
+			<li class="level0 nav-<?php echo $j;?> parent">
+				<a title="<?php echo $category->getName();?>" class="itemMenuName level1" href="<?php echo $category->getUrl();?>"><?php echo $category->getName();?></a>
+				<?php if($category->getChildren()):?>
+					<?php echo $this->getSubHtml($category,$j);?>    
+					<?php endif;?>
+			</li>
+		<?php if ($i%$row_array[$rindex]==0 || $i==$row_array[$rindex]): ?>    
+			</ul>                  
+			<?php $i=0; $rindex++;?>
+		<?php endif ?>
+	<?php endforeach;?>       
+</div>
+
+<?php
+if($data['featured_type'] == 'block'){
+  ?>
+  <div class="featured_static_block">
+    <?php echo Mage::app()->getLayout()->createBlock('cms/block')->setBlockId($data['featured_block'])->toHtml();?>
+  </div>
+<?php
+}
+?>

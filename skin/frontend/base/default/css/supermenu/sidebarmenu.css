@@ -1,0 +1,51 @@
+/*
+  * Copyright (c) 2014 www.magebuzz.com 
+	* Supermenu CSS Sidebar
+*/  
+.block-supermenu{}
+.block-supermenu .block-content{padding:5px;}
+#supermenu-sidebar{}
+#supermenu-sidebar li{float:left; width:100%; position:relative; text-align:left;}
+#supermenu-sidebar li  a.sm-item-link{
+	color: #ff8a00;
+	float: left;
+	font-weight: bold;
+	padding: 5px 12px 6px 8px;
+	text-decoration:none;
+}
+/* Sub menu */
+#supermenu-sidebar li > div.group-menu-items{
+	border: 1px solid #f0f0f0;
+	left: -10000px;
+	position: absolute;
+	z-index:9999;
+}
+.sm-left-sidebar li > div.group-menu-items.shown-sub {
+    left: 165px!important;
+    z-index:9999;
+		background:#FFF;
+		padding:5px;
+}
+.sm-right-sidebar li > div.group-menu-items.shown-sub {
+    left: auto!important;
+		right:165px!important;
+    z-index:9999;
+		background:#FFF;
+		padding:5px;
+}
+#supermenu-sidebar li > div.shown-sub .header-content,
+#supermenu-sidebar li > div.shown-sub .main-content-box,
+#supermenu-sidebar li > div.shown-sub .footer-content{float:left; width:100%;}
+#supermenu-sidebar li > div.shown-sub .main-content-box > div{float:left; width:100%; }
+#supermenu-sidebar li > div .header-content,#supermenu-sidebar li > div .main-menu-content{float:left; width:100%; border-bottom: 1px solid #ccc;}
+#supermenu-sidebar li > div .header-content{padding:10px 0;}
+#supermenu-sidebar li > div .header-content p,#supermenu-sidebar li > div .main-menu-content p, #supermenu-sidebar li > div .footer-content p{margin:0;}
+#supermenu-sidebar li > div .main-menu-content .sm-grid{padding:10px 0;}
+#supermenu-sidebar li > div .main-menu-content .sm-custom img{max-width:100%;}
+#supermenu-sidebar li > div.shown-sub .main-menu-content .featured-items{text-align:center; padding:10px 0; background:#f0f0f0;}
+#supermenu-sidebar li > div.shown-sub .main-menu-content .featured-items  h3.feature-title{font-size:12px; color:#333; text-decoration:none; font-weight:bold; text-transform:uppercase;}
+#supermenu-sidebar li > div.shown-sub .main-menu-content .featured-items  ul li{float:none; width:100%; text-align:center;}
+#supermenu-sidebar li > div.shown-sub .main-menu-content .featured-items  .product-name a{text-decoration:none; color:#333; font-size:12px;}
+#supermenu-sidebar li > div.shown-sub .main-menu-content .featured-items  .category-name{padding:5px;}
+#supermenu-sidebar li > div.shown-sub .main-menu-content .featured-items  .category-name a{text-decoration:none; color:#333; font-size:12px;}
+#supermenu-sidebar li > div .footer-content{float:left; width:100%; padding:10px 0;}

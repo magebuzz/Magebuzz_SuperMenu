@@ -1,0 +1,178 @@
+<?xml version="1.0"?>
+<config>
+  <tabs>
+    <magebuzz translate="label">
+      <label>Magebuzz Add-ons</label>
+      <sort_order>400</sort_order>
+    </magebuzz>
+  </tabs>
+  <sections>
+    <supermenu translate="label" module="supermenu">
+      <label>Super Menu</label>
+      <tab>magebuzz</tab>
+      <frontend_type>text</frontend_type>
+      <sort_order>299</sort_order>
+      <show_in_default>1</show_in_default>
+      <show_in_website>1</show_in_website>
+      <show_in_store>1</show_in_store>
+      <groups>
+        <general translate="label">
+          <label>General Setting</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>1</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+            <topmenu_active translate="label comment">
+              <label>Activate Top Menu</label>
+              <frontend_type>select</frontend_type>
+              <sort_order>1</sort_order>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>0</show_in_store>
+            </topmenu_active>  
+						<sidebar_menu_active translate="label comment">
+              <label>Activate Sidebar Menu</label>
+              <frontend_type>select</frontend_type>
+              <sort_order>2</sort_order>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>0</show_in_store>
+            </sidebar_menu_active>
+						<sidebar_position>
+							<label>Display on Sidebar</label>
+							<frontend_type>select</frontend_type>
+							<sort_order>3</sort_order>
+							<source_model>supermenu/system_config_source_sidebar_position</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_default>1</show_in_default>
+							<show_in_store>1</show_in_store>
+							<depends><sidebar_menu_active>1</sidebar_menu_active></depends>
+						</sidebar_position>	
+						<include_js translate="label comment">
+							<label>Include jQuery</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>0</show_in_store>
+							<comment><![CDATA[Turn off jQuery library if you already include it in your store]]></comment>
+						</include_js>
+          </fields>
+        </general>				
+        <style_setting translate="label">
+          <label>Default Style Setting</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>20</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+          <bg_box_color translate="label comment">
+          <label>Background Color For Box Content</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>1</sort_order>              
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>0</show_in_store>
+          <validate>color</validate>
+          </bg_box_color>  
+					<bg_boder_color translate="label comment">
+          <label>Border Color For Box Content</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>2</sort_order>              
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>0</show_in_store>
+          <validate>color</validate>
+          </bg_boder_color>    
+          <border_size translate="label comment">
+          <label>Border Size For Box Content</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>3</sort_order>              
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>0</show_in_store>              
+          </border_size>
+          <item_font_type translate="label comment">
+          <label>Font Type For Items</label>
+          <frontend_type>select</frontend_type>
+          <source_model>supermenu/config_fonttype</source_model>
+          <sort_order>4</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>0</show_in_store>
+          </item_font_type>
+          <item_font_size translate="label comment">
+          <label>Font Size Of Items</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>5</sort_order>              
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>0</show_in_store>              
+          </item_font_size>     
+          <item_font_color translate="label comment">
+          <label>Font Color Of Items</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>6</sort_order>              
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>0</show_in_store>
+          <validate>color</validate>
+          </item_font_color>         
+          <item_font_hover_color translate="label comment">
+          <label>Font Color Of Items When Hover</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>7</sort_order>              
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>0</show_in_store>
+          <validate>color</validate>
+          </item_font_hover_color>
+
+          <subitem_font_type translate="label comment">
+          <label>Font Type For Sub Items</label>
+          <frontend_type>select</frontend_type>
+          <source_model>supermenu/config_fonttype</source_model>
+          <sort_order>8</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>0</show_in_store>
+          </subitem_font_type>
+          <subitem_font_size translate="label comment">
+          <label>Font Size Of Sub Items</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>9</sort_order>              
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>0</show_in_store>              
+          </subitem_font_size>     
+          <subitem_font_color translate="label comment">
+          <label>Font Color Of Sub Items</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>10</sort_order>              
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>0</show_in_store>
+          <validate>color</validate>
+          </subitem_font_color>         
+          <subitem_font_hover_color translate="label comment">
+          <label>Font Color Of Sub Items When Hover</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>11</sort_order>              
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>0</show_in_store>
+          <validate>color</validate>
+          </subitem_font_hover_color>
+          </fields> 
+        </style_setting> 
+      </groups>
+    </supermenu>
+  </sections>
+</config>

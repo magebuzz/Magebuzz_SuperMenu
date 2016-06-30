@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<config>
+  <menu>
+    <supermenu module="supermenu">
+      <title>Super Menu</title>
+      <sort_order>71</sort_order>
+      <children>      
+        <manage_supermenu module="supermenu">
+          <title>Manage Menu Items</title>
+          <sort_order>0</sort_order>
+          <action>supermenu/adminhtml_supermenu</action>
+        </manage_supermenu>       
+        <settings module="supermenu" translate="title">
+          <title>Configuration</title>
+          <sort_order>1000</sort_order>
+          <action>adminhtml/system_config/edit/section/supermenu</action>
+        </settings>
+      </children>
+    </supermenu>
+  </menu>
+  <acl>
+    <resources>
+      <all>
+        <title>Allow Everything</title>
+      </all>
+      <admin>
+        <children>
+          <system>
+            <children>
+              <config>
+                <children>
+                  <supermenu>
+                    <title>Super menu</title>
+										<sort_order>200</sort_order>
+                  </supermenu>
+                </children>
+              </config>
+            </children>
+          </system>
+					<supermenu module="supermenu">
+			      <title>Super Menu</title>
+			      <sort_order>71</sort_order>
+			      <children>      
+			        <manage_supermenu module="supermenu">
+			          <title>Manage Menu Items</title>
+			          <sort_order>0</sort_order>
+			          <action>supermenu/adminhtml_supermenu</action>
+			        </manage_supermenu>       
+			        <settings module="supermenu" translate="title">
+			          <title>Configuration</title>
+			          <sort_order>10</sort_order>
+			          <action>adminhtml/system_config/edit/section/supermenu</action>
+			        </settings>
+			      </children>
+			    </supermenu>
+        </children>
+      </admin>
+    </resources>
+  </acl>
+</config>

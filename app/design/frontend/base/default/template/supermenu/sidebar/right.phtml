@@ -1,0 +1,69 @@
+<?php 
+  /*
+  * Copyright (c) 2014 www.magebuzz.com 
+  */                
+  $listItem = $this->getMenuItemsByPosition(Magebuzz_Supermenu_Model_Config_Position::SIDEBAR_MENU);
+?>
+
+<div class="block block-supermenu">
+  <div class="block-title">
+    <strong><span><?php echo $this->__('Menu')?></span></strong>
+  </div>
+  <div class="block-content">
+    <ul id="supermenu-sidebar" class="sm-right-sidebar">
+      <?php foreach($listItem as $item):?>
+        			<?php $styles = Mage::helper('supermenu')->getStyleByItemId($item->getId()); ?>
+      <li class="sm-item">
+        <a class="sm-item-link" onmouseover="this.style.color='#<?php echo $styles->getItemFontHoverColor()?>'" onmouseout="this.style.color='#<?php echo $styles->getItemFontColor()?>'" style="<?php if($item->getIconItem()!=""):?>background:url('<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'supermenu/items/' . $item->getIconItem();?>') center left no-repeat; padding-left: 15px;<?php endif;?><?php echo Mage::helper('supermenu')->getStyleCss($item->getId()); ?>" title="<?php echo $item->getTextItem();?>" <?php if($item->getLinkItem()):?>href="<?php echo Mage::helper('supermenu')->getLinkbyItem($item); ?>"<?php endif;?>>
+          <?php echo $item->getTextItem();?>
+        </a>      
+        <?php if($item->getItemType() != Magebuzz_Supermenu_Model_Config_Itemtype::TYPE_TEXT_LINK):?>    
+          <div class="group-menu-items sub-items-row-<?php echo $item->getId();?>" style="<?php echo Mage::helper('supermenu')->getSubitemsCss($item->getId()); ?>">
+            <?php if($item->getHeaderContent() != ""):?>
+							<?php if($item->getItemType() == Magebuzz_Supermenu_Model_Config_Itemtype::TYPE_CUSTOM):?>
+								<div class="header-content" style="width:<?php if($item->getWidthOfColumn()){echo $item->getWidthOfColumn();}else{ echo '475';}?>px;"><?php echo $item->getHeaderContent();?></div>
+							<?php else:?>
+								<div class="header-content"><?php echo $item->getHeaderContent();?></div>
+							<?php endif; ?>
+            <?php endif;?>            
+            <div class="main-menu-content">
+            <?php if($item->getItemType() == Magebuzz_Supermenu_Model_Config_Itemtype::TYPE_CUSTOM):?>
+							<div class="sm-custom" id="item-<?php echo $item->getId()?>-custom" style="width:<?php if($item->getWidthOfColumn()){echo $item->getWidthOfColumn();}else{ echo '475';}?>px;">
+              <?php echo $item->getCustomContent();?>
+							</div>
+            <?php else:?> 
+						<div class="sm-grid left">
+							<?php echo $this->getHtmlContentItem($item)?>            
+						</div>
+            <div class="featured-items" style="float:right; width:<?php if($item->getWidthOfColumn()){echo $item->getWidthOfColumn();}else{ echo '180';}?>px;"><?php echo $this->getFeatureHtml($item)?></div>     
+						<script type="text/javascript">
+							jQuery(document).ready(function(){
+								var gridWidth = jQuery(".sub-items-row-<?php echo $item->getId();?> > .main-menu-content > div.sm-grid").outerWidth();
+								var featuredColWidth = jQuery(".sub-items-row-<?php echo $item->getId();?> > .main-menu-content > div.featured-items").outerWidth();	
+								var fullWidth = gridWidth + featuredColWidth + 20; 
+								jQuery(".sub-items-row-<?php echo $item->getId();?> > .header-content").css("width",fullWidth);
+								jQuery(".sub-items-row-<?php echo $item->getId();?> > .main-menu-content").css("width",fullWidth);
+								jQuery(".sub-items-row-<?php echo $item->getId();?> > .footer-content").css("width",fullWidth);
+								var gridHeight = jQuery(".sub-items-row-<?php echo $item->getId();?> > .main-menu-content > div.sm-grid").outerHeight();
+								var featuredItemHeight = jQuery(".sub-items-row-<?php echo $item->getId();?> > .main-menu-content > div.featured-items").outerHeight();
+								var maxHeight = gridHeight;
+								maxHeight = (gridHeight < featuredItemHeight) ? featuredItemHeight:gridHeight; 
+								jQuery(".sub-items-row-<?php echo $item->getId();?> > .main-menu-content > div.featured-items").css("height",maxHeight);
+							});
+						</script>
+            <?php endif;?>
+            </div>
+            <?php if($item->getFooterContent() != ""):?> 
+							<?php if($item->getItemType() == Magebuzz_Supermenu_Model_Config_Itemtype::TYPE_CUSTOM):?>
+								<div class="footer-content" style="width:<?php if($item->getWidthOfColumn()){echo $item->getWidthOfColumn();}else{ echo '475';}?>px;"><?php echo $item->getFooterContent();?></div>
+							<?php else:?>
+								<div class="footer-content"><?php echo $item->getFooterContent();?></div>
+							<?php endif; ?>
+            <?php endif;?>
+          </div>              
+          <?php endif;?>
+      </li>
+        <?php endforeach;?>
+    </ul>
+  </div>
+</div>

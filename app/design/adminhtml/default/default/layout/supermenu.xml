@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <default>    
+    <reference name="head">
+      <action method="addJs">
+        <script>magebuzz/jscolor/jscolor.js</script>
+      </action>   
+    </reference>
+  </default>
+  <supermenu_adminhtml_supermenu_index>
+    <reference name="content">
+      <block type="supermenu/adminhtml_supermenu" name="supermenu" />
+    </reference>
+  </supermenu_adminhtml_supermenu_index>
+  <supermenu_adminhtml_supermenu_new>
+    <reference name="content">
+      <block type="adminhtml/template" name="supermenu.supermenu" template="supermenu/create/select_type.phtml" />
+    </reference>
+  </supermenu_adminhtml_supermenu_new>
+  <supermenu_adminhtml_supermenu_edit>
+    <update handle="editor"/>      
+    <reference name="head">
+      <action method="addJs">
+        <script>magebuzz/jscolor/jscolor.js</script>
+      </action> 
+      <action method="addJs">
+        <script>mage/adminhtml/wysiwyg/widget.js</script>
+      </action>
+      <action method="setCanLoadTinyMce">
+        <flag>1</flag>
+      </action>         
+    </reference>
+  </supermenu_adminhtml_supermenu_edit>
+
+</layout>

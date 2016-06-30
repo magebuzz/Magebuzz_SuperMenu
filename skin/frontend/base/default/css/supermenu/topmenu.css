@@ -1,0 +1,78 @@
+/*
+  * Copyright (c) 2014 www.magebuzz.com 
+	* Supermenu CSS
+*/  
+.supermenu{float:left; width:100%; display:block; margin-bottom:20px;}
+#mb-supermenu {font-size: 13px; margin: 0 auto; padding: 0 16px; width: 918px;}
+#mb-supermenu li { float:left; position: relative; text-align: left; z-index:9999;}
+#mb-supermenu li  a.sm-item-link{
+	color: #A7C6DD;
+	float: left;
+	font-weight: bold;
+	padding: 5px 12px 6px 8px;
+	text-decoration:none;
+	cursor:pointer;
+}
+/* Sub menu */
+#mb-supermenu li > div.group-menu-items{
+	border: 1px solid #f0f0f0;
+	left: -10000px;
+	position: absolute;
+	top: 27px;
+	z-index:9999;
+	background:#FFF;
+}
+#mb-supermenu li > div.group-menu-items.shown-sub {
+    left: 0;
+    z-index: 999;
+		background:#FFF;
+		padding:5px;
+}
+
+#mb-supermenu li > div.shown-sub .header-content,
+#mb-supermenu li > div.shown-sub .main-content-box,
+#mb-supermenu li > div.shown-sub .footer-content{display:inline-block; *display:inline; zoom:1; width:100%;}
+#mb-supermenu li > div.shown-sub .main-content-box > div{float:left; width:100%; }
+#mb-supermenu li > div .header-content,#mb-supermenu li > div .main-menu-content{display:inline-block; *display:inline; zoom:1;  width:100%; border-bottom: 1px solid #ccc;}
+#mb-supermenu li > div .header-content{padding:10px 0; overflow:hidden;}
+#mb-supermenu li > div .header-content p,#mb-supermenu li > div .main-menu-content p, #mb-supermenu li > div .footer-content p{margin:0;}
+#mb-supermenu li > div .main-menu-content .sm-custom img{max-width:100%;}
+#mb-supermenu li > div .main-menu-content .sm-grid{}
+#mb-supermenu li > div.shown-sub .main-menu-content .featured-items{text-align:center; padding:10px 0; background:#f0f0f0;}
+#mb-supermenu li > div.shown-sub .main-menu-content .featured-items  h3.feature-title{font-size:12px; color:#333; text-decoration:none; font-weight:bold; text-transform:uppercase;}
+#mb-supermenu li > div.shown-sub .main-menu-content .featured-items  ul li{float:none; width:100%; text-align:center;}
+#mb-supermenu li > div.shown-sub .main-menu-content .featured-items  .product-name a{text-decoration:none; color:#333; font-size:12px;}
+#mb-supermenu li > div.shown-sub .main-menu-content .featured-items  .category-name{padding:5px;}
+#mb-supermenu li > div.shown-sub .main-menu-content .featured-items  .category-name a{text-decoration:none; color:#333; font-size:12px;}
+#mb-supermenu li > div .footer-content{float:left; width:100%; padding:10px 0;}
+
+/* Category Listing */
+.grid-categories-column ul.menu-column{}
+.grid-categories-column ul.menu-column li{float:left; width:100%;}
+.grid-categories-column ul.menu-column li a.itemMenuName{font-size:12px; color:#333; text-decoration:none; font-weight:bold; text-transform:uppercase;}
+.grid-categories-column ul.menu-column li a.itemMenuName:hover{color:#ff8a00;}
+.grid-categories-column ul.menu-column li ul{display:inline-block; *display:inline; zoom:1; width:100%;}
+.grid-categories-column ul.menu-column li ul li{display:inline-block; *display:inline; zoom:1; width:100%;}
+.grid-categories-column ul.menu-column li ul li a.itemMenuName{padding-left:5px;  font-weight:normal; text-transform:capitalize;}
+.grid-categories-column ul.menu-column li ul li ul{display:inline-block; *display:inline; zoom:1; width:100%;}
+.grid-categories-column ul.menu-column li ul li ul li{width:100%; display:inline-block; *display:inline; zoom:1;}
+.grid-categories-column ul.menu-column li ul li ul li a{display:inline-block; *display:inline; zoom:1; width:100%;}
+.grid-categories-column ul.menu-column li ul li ul li a.itemMenuName.level4{padding-left:10px;  font-weight:normal; text-transform:capitalize;}
+
+/* Product Listing */
+.grid-products-column{padding:10px 0; border-bottom:1px dotted #ccc; overflow:hidden;}
+.grid-products-column.last{padding:10px 0 0; border-bottom:0 none;}
+.grid-products-column li.product{text-align:center!important; padding:3px 0;}
+.grid-products-column li.product .product-image{
+	border: 1px solid #f0f0f0;
+	float: left;
+	width: 50px;
+}
+.grid-products-column li.product .product-info{text-align:left; margin-left: 60px;}
+.grid-products-column li.product .product-info .product-name a{text-decoration:none; color:#333; font-size:12px;}
+.grid-products-column li.product .product-info .product-name a:hover{color:#ff8a00;}
+
+/* Featured Item */
+.featured-items{}
+.featured-items .product-image{}
+.featured-items .product-image img{max-width:100%;}

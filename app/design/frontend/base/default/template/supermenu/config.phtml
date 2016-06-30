@@ -1,0 +1,11 @@
+<?php 
+  /*
+  * Copyright (c) 2014 www.magebuzz.com 
+  */                
+?>
+
+<?php if (Mage::getStoreConfig('supermenu/general/topmenu_active')): ?>
+	<?php echo $this->getChildHtml('catalog.topnav.new') ?>
+<?php else: ?>
+	<?php echo $this->getChildHtml('catalog.topnav.old') ?>
+<?php endif ?>

@@ -1,0 +1,30 @@
+<?php 
+  $item = $this->getItemData() ;
+  $listCategories = $this->getFeatureCategories($item);   
+  $_helper    = $this->helper('catalog/output');          
+?>
+<h3 class="feature-title"><?php echo $item->getFeaturedTitle()?></h3>
+<ul>           
+  <?php $i=0; foreach($listCategories as $category):?>          
+    <?php $i++;?>    
+    <li class="feature-category-<?php echo $i;?>">      
+      <div class="product-info">
+        <?php if ($_imgUrl = $category->getImageUrl()):?>
+          <?php 
+            $_imgHtml ='';
+            $_imgHtml = '<p class="category-image"><img width="135" src="'.$_imgUrl.'" alt="'.$this->escapeHtml($category->getName()).'" title="'.$this->escapeHtml($category->getName()).'" /></p>';
+            $_imgHtml = $_helper->categoryAttribute($category, $_imgHtml, 'image');
+            echo $_imgHtml;?>
+        <?php endif;?>
+				<div class="category-name">
+					<a class="" href="<?php echo $category->getUrl($category); ?>" title="<?php echo $category->getName();?>"><?php echo $category->getName();?></a>
+				</div>	
+        <?php if($_description=$category->getDescription()): ?>
+          <div class="category-description std">
+            <?php echo $_helper->categoryAttribute($category, $_description, 'description') ?>
+          </div>
+          <?php endif; ?>
+      </div>
+    </li>        
+    <?php endforeach;?>
+  </ul>  

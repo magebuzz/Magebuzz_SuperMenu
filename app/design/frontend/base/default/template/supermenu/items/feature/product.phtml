@@ -1,0 +1,21 @@
+<?php 
+  $item = $this->getItemData() ;
+  $listProducts = $this->getFeatureProducts($item);    
+?>
+<h3 class="feature-title"><?php echo $item->getFeaturedTitle()?></h3>
+<ul>           
+  <?php $i=0; foreach($listProducts as $product):?>          
+    <?php $i++;?>    
+    <li class="feature-product-<?php echo $i;?>">
+      <a href="<?php echo $product->getProductUrl(); ?>" class="product-image" title="<?php echo $product->getName();?>">
+				<img src="<?php echo Mage::helper('catalog/image')->init($product, 'small_image')->resize(135); ?>" title="<?php echo $product->getName();?>" />
+			</a>
+      <div class="product-info">
+        <h3 class="product-name">
+					<a href="<?php echo $product->getProductUrl(); ?>" title="<?php echo $product->getName();?>"><?php echo $product->getName();?></a>
+				</h3>
+				<?php echo $this->getPriceHtml($product, true) ?>
+      </div>
+    </li>        
+    <?php endforeach;?>
+  </ul>  
